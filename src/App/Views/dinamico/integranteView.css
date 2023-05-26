@@ -1,0 +1,12 @@
+.shadow{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.2), 10.0, 0.0, 0.0, 10.0);
+}
+
+#btnSaludarIntegrante {
+	-fx-background-color: #56ebad;
+}
+
+#btnSaludarIntegrante:hover{
+	-fx-background-color: rgba(83, 163,129);
+	-fx-cursor: hand;
+}

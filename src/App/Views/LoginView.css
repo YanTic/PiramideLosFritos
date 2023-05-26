@@ -1,0 +1,44 @@
+/* Split Pane */
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.2), 10.0, 0.0, 0.0, 10.0);
+}
+
+.split-pane:horizontal > .split-pane-divider{
+	-fx-background-color: #eef2f7;
+}
+
+/*
+.split-pane:vertical > .split-pane-divider{
+	-fx-background-color: transparent;
+}
+*/
+
+#btnIngresar {
+	-fx-background-color: #ccd5ae;
+}
+
+#btnIngresar:hover{
+	-fx-background-color: #9fa87c;
+}
+
+#btnAyuda {
+	-fx-background-color: transparent;
+}
+
+#btnAyuda:hover{
+/*	-fx-font-color: #2775FF;*/
+/*	-fx-font-color: red;*/
+/*	-fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.2), 10.0, 0.0, 0.0, 10.0);*/
+	-fx-text-fill: #565e39;
+	-fx-font-weight: bold;
+}
+
+
+#btnRegresar {
+	-fx-background-color: transparent;
+}
+
+#btnRegresar:hover {
+	-fx-background-color: #75a1ce;
+}

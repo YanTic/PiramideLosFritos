@@ -1,0 +1,14 @@
+/* Split Pane */
+
+.shadow{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.2), 10.0, 0.0, 0.0, 10.0);
+}
+
+#btnVerProyecto {
+	-fx-background-color: transparent;
+}
+
+#btnVerProyecto:hover{
+	-fx-background-color: rgba(195, 238,244,0.2);
+	-fx-cursor: hand;
+}

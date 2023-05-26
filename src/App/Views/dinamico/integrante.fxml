@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="616.0" style="-fx-background-color: ddd0c3;" stylesheets="@integranteView.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Controllers.dinamico.IntegranteController">
+   <children>
+      <Pane prefHeight="60.0" prefWidth="60.0" style="-fx-background-color: #7dd7cb;">
+         <children>
+            <ImageView fitHeight="33.0" fitWidth="34.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/Cara.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Label fx:id="nombreIntegrante" layoutX="76.0" layoutY="7.0" prefHeight="25.0" prefWidth="329.0" text="Juan de las Nieves Bunny Pascal">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="correoIntegrante" layoutX="76.0" layoutY="35.0" prefHeight="17.0" prefWidth="301.0" text="juan@email.com">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnSaludarIntegrante" contentDisplay="RIGHT" layoutX="483.0" mnemonicParsing="false" onAction="#onBtnSaludarIntegrante" prefHeight="60.0" prefWidth="133.0" styleClass="btnTransparente" text="Saludar">
+         <graphic>
+            <ImageView fitHeight="38.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imagenes/greetings.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
