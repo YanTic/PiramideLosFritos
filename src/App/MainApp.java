@@ -3,8 +3,7 @@ import java.io.IOException;
 
 import App.Controllers.LoginViewController;
 import App.Controllers.ModelFactoryController;
-import App.Model.Equipo;
-import App.Model.Persona;
+import App.Model.Cliente;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,9 +17,7 @@ public class MainApp extends Application {
 	private BorderPane rootLayout;
 
 	private ModelFactoryController modelFactoryController;
-	Persona usuarioLogeado;
-	Equipo equipoUsuarioLogeado;
-//	Domain domain;	
+	Cliente usuarioLogeado;
 
 
 	@Override
@@ -78,19 +75,12 @@ public class MainApp extends Application {
 		return modelFactoryController;
 	}
 	
-	public void setUsuarioLogeado(Persona usuarioLogeado) {
-		this.usuarioLogeado = usuarioLogeado;
-		
-		if (this.usuarioLogeado != null)
-			equipoUsuarioLogeado = modelFactoryController.getEquipoPorPersona(usuarioLogeado.getId());			
+	public void setUsuarioLogeado(Cliente usuarioLogeado) {
+		this.usuarioLogeado = usuarioLogeado;			
 	}
 
-	public Persona getUsuarioLogeado() {
+	public Cliente getUsuarioLogeado() {
 		return usuarioLogeado;
-	}
-
-	public Equipo getEquipoUsuarioLogeado() {
-		return equipoUsuarioLogeado;
 	}
 
 	public static void main(String[] args) {
