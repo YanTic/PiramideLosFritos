@@ -4,10 +4,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import App.Model.Domain;
+import App.Service.DatabaseService;
 
 public class ModelFactoryController {
 
 	Domain domain;
+	DatabaseService databaseService;
 	
 	//------------------------------  Singleton ------------------------------------------------
 	// Clase estatica oculta. Tan solo se instanciara el singleton una vez
@@ -32,6 +34,10 @@ public class ModelFactoryController {
 	
 	private void inicializarDatos() {
 		domain = new Domain();
+		
+		databaseService = new DatabaseService();
+		databaseService.printAllClients();
+		
 		
 		// Creacion de personas
 //		Persona persona = new Persona();
