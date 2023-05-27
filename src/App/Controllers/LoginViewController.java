@@ -24,7 +24,15 @@ public class LoginViewController implements Initializable {
     @FXML private TextField txtUsuario;
     @FXML private TextField txtContrasenia;
     @FXML private Button btnIngresar;
-    @FXML private Button btnAyuda;
+    @FXML private Button btnRegistro;
+    
+    @FXML private AnchorPane panelRegistrarUsuario;
+    @FXML private TextField txtNuevoUsuario;
+    @FXML private TextField txtNuevaContrasenia;
+    @FXML private TextField txtConfirmarNuevaContrasenia;
+    @FXML private Button btnCrearCuenta;
+    @FXML private Button btnRegresar;
+    
 
 	private MainApp mainApp;
     ModelFactoryController modelFactoryController;
@@ -43,14 +51,9 @@ public class LoginViewController implements Initializable {
 		this.mainApp = mainApp;		
 	}
 	
-	
-    @FXML
-    void accionBtnAyuda(ActionEvent event) {
-
-    }
 
     @FXML
-    void accionBtnIngresar(ActionEvent event) {
+    void onBtnIngresar(ActionEvent event) {
     	inicioSesion();
     }
     
@@ -93,6 +96,22 @@ public class LoginViewController implements Initializable {
 			mostrarMensaje("Notifacion", "Usuario NO Encontado", "Datos ingresados NO validos", AlertType.ERROR);
 		}
     
+    }
+    
+    
+    @FXML
+    void onBtnRegistro(ActionEvent event) {
+    	panelRegistrarUsuario.setVisible(true);
+    }
+
+    @FXML
+    void onBtnRegresar(ActionEvent event) {
+    	panelRegistrarUsuario.setVisible(false);
+    }
+
+    @FXML
+    void onBtnCrearCuenta(ActionEvent event) {
+
     }
     
     public void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType){

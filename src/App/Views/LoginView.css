@@ -22,8 +22,16 @@
 	-fx-background-color: #9fa87c;
 }
 
-#btnAyuda {
+#btnRegistro {
 	-fx-background-color: transparent;
+}
+
+#btnCrearCuenta {
+	-fx-background-color: #80c168;
+}
+
+#btnCrearCuenta:hover{
+	-fx-background-color: #9ece8c;
 }
 
 #btnAyuda:hover{
