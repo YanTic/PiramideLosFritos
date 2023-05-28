@@ -3,6 +3,7 @@ package App.Controllers;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import App.Model.Cliente;
 import App.Model.Domain;
 import App.Service.DatabaseService;
 
@@ -33,34 +34,19 @@ public class ModelFactoryController {
 		
 	
 	private void inicializarDatos() {
-		domain = new Domain();
-		
+		domain = new Domain();		
 		databaseService = new DatabaseService();
-		databaseService.printAllClients();
-		
-		
-		// Creacion de personas
-//		Persona persona = new Persona();
-//		persona.setId(1);
-//		persona.setNombre("Ana");
-//		persona.setApellido("Rodriguez");
-//		persona.setContrasenia("ana123");
-//		persona.setEmail("ana@email.com");
-//		persona.setFechaNacimiento(LocalDate.of(1995, 12, 31));
-//		persona.setDocumentos(null);
-//			ArrayList<Mensaje> msgs = new ArrayList<>();
-//			msgs.add(new Mensaje("Holaa"));
-//		persona.setMensajes(msgs);
-//		domain.getListaPersonas().add(persona);
-				
 	}
 	
-	//TODO: ESTO DEBE SER LLAMANDO A LA BASE DE DATOS
 	
-//	public boolean verificarUsuario(String usuario, String contrasenia) {		
-//		return domain.verificarUsuario(usuario, contrasenia);
-//	}
-//	
+	public boolean verificarUsuario(String usuario, String contrasenia) {		
+		return databaseService.verificarUsuario(usuario, contrasenia);
+	}
+
+	public Cliente getClientePorUsuarioYContrasenia(String usuario, String contrasenia) {
+		return databaseService.getClientePorUsuarioYContrasenia(usuario, contrasenia);
+	}
+	
 	
 	
 //	public Persona getPersonaPorId(int idPersona) {

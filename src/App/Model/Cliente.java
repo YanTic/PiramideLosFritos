@@ -9,13 +9,12 @@ public class Cliente {
 	private String direccion;
 	private String ciudad;
 	private String membresia;
-	private String afiliado_id;
+	private Integer afiliado_id;
 	
-	@SuppressWarnings("unused")
-	private Cliente() {}
+	public Cliente() {}
 
 	public Cliente(String nombre, String apellido, String email, String telefono, 
-			String direccion, String ciudad, String membresia, String afiliado_id) {
+			String direccion, String ciudad, String membresia, Integer afiliado_id) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
@@ -82,12 +81,18 @@ public class Cliente {
 		this.membresia = membresia;
 	}
 
-	public String getAfiliado_id() {
+	public Integer getAfiliado_id() {
 		return afiliado_id;
 	}
 
-	public void setAfiliado_id(String afiliado_id) {
+	public void setAfiliado_id(Integer afiliado_id) {
 		this.afiliado_id = afiliado_id;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Cliente [nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", telefono=" + telefono
+				+ ", direccion=" + direccion + ", ciudad=" + ciudad + ", membresia=" + membresia + ", afiliado_id="
+				+ afiliado_id + "]";
+	}
 }

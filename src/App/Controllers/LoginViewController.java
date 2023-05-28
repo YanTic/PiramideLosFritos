@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import App.MainApp;
+import App.Model.Cliente;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -65,32 +66,32 @@ public class LoginViewController implements Initializable {
 		// Valida los datos
 		if(datosValidos(usuario, contrasenia)){
 			// Comparo los datos del usuario 
-//			if(modelFactoryController.verificarUsuario(usuario, contrasenia)){
-//				mostrarMensaje("Notifacion", "Login Correcto", "Bienvenido "+usuario+ "!", AlertType.INFORMATION);				
-//				
-//				Persona usuarioLogeado = modelFactoryController.getPersonaPorUsuarioYContrasenia(usuario, contrasenia);				
-//				mainApp.setUsuarioLogeado(usuarioLogeado);
-//				
-//				// Llamo a ColaboracionViewController y cambio la view (el fxml)				
-//				try {			
-//					FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("Views/Tienda.fxml"));
-//					Parent root = loader.load();
-//
-//					// Creo el controlador y se le asigna la MainApp
-//					TiendaViewController colaboracionViewController = loader.getController();
-//					colaboracionViewController.setMainApp(mainApp);
-//					
-//					Scene scene = new Scene(root);
-//					mainApp.getPrimaryStage().setScene(scene);					
-//				} 
-//				catch (IOException e) {
-//					e.printStackTrace();
-//				}
-//								
-//			}
-//			else{
-//				mostrarMensaje("Notifacion", "Usuario NO Encontado o Contrasenia es Incorrecta", "Datos ingresados NO validos", AlertType.ERROR);
-//			}
+			if(modelFactoryController.verificarUsuario(usuario, contrasenia)){
+				mostrarMensaje("Notifacion", "Login Correcto", "Bienvenido "+usuario+ "!", AlertType.INFORMATION);				
+				
+				Cliente usuarioLogeado = modelFactoryController.getClientePorUsuarioYContrasenia(usuario, contrasenia);				
+				mainApp.setUsuarioLogeado(usuarioLogeado);
+				
+				// Llamo a TiendaViewController y cambio la view (el fxml)				
+				try {			
+					FXMLLoader loader = new FXMLLoader(MainApp.class.getResource("Views/Tienda.fxml"));
+					Parent root = loader.load();
+
+					// Creo el controlador y se le asigna la MainApp
+					TiendaViewController tiendaViewController = loader.getController();
+					tiendaViewController.setMainApp(mainApp);
+					
+					Scene scene = new Scene(root);
+					mainApp.getPrimaryStage().setScene(scene);					
+				} 
+				catch (IOException e) {
+					e.printStackTrace();
+				}
+								
+			}
+			else{
+				mostrarMensaje("Notifacion", "Usuario NO Encontado o Contrasenia es Incorrecta", "Datos ingresados NO validos", AlertType.ERROR);
+			}
 		}
 		else{
 			mostrarMensaje("Notifacion", "Usuario NO Encontado", "Datos ingresados NO validos", AlertType.ERROR);
