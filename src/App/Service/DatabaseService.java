@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import App.Model.Cliente;
+import App.Model.Producto;
 
 public class DatabaseService {
 	
@@ -50,8 +52,7 @@ public class DatabaseService {
 			}			
 			System.out.println("Terminado");
 			
-		} 
-		catch (SQLException e) {e.printStackTrace();}
+		} catch (SQLException e) {e.printStackTrace();}
 		
 		return esUsuarioExistente;
 	}
@@ -166,5 +167,51 @@ public class DatabaseService {
 		
 		return ultimoIdCliente;
 	}
+
+	public ArrayList<Producto> getProductos() {
+		ArrayList<Producto> productos = new ArrayList<>();
+		
+		try {
+			statement = connection.createStatement();				
+			String sql = "SELECT NOMBRE, PRECIO, UNIDADESDISPONIBLES, DESCRIPCION, CATEGORIA_ID FROM PRODUCTO";			
+			resultSet = statement.executeQuery(sql);
+			
+			Producto producto;
+			
+			while (resultSet.next()) {
+				producto = new Producto();
+				producto.setNombre(resultSet.getString("NOMBRE"));
+				producto.setPrecio(resultSet.getString("PRECIO"));
+				producto.setUnidadesDisponibles(resultSet.getString("UNIDADESDISPONIBLES"));
+				producto.setDescripcion(resultSet.getString("DESCRIPCION"));
+				producto.setCategoria(getNombreCategoria(resultSet.getInt("CATEGORIA_ID")));
+				productos.add(producto);				
+			}
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		
+		return productos;
+	}
+	
+	public String getNombreCategoria(Integer categoria_id) {
+		String categoria = null;
+		
+		try {
+			// Se tiene que crear otro statement al global porque esta funcion es llamada
+			// dentro de un while() que usa el statement global
+			Statement statement = connection.createStatement();
+			String sql = "SELECT NOMBRE FROM CATEGORIA WHERE ID = "+categoria_id;								
+			ResultSet resultSet = statement.executeQuery(sql);
+			
+			while(resultSet.next()) {			
+				categoria = resultSet.getString("NOMBRE");
+			}		
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		return categoria;
+	}
+	
 	
 }

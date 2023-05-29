@@ -2,74 +2,66 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="163.0" prefWidth="616.0" style="-fx-background-color: ddd0c3;" styleClass="shadow2" stylesheets="@productoView.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Controllers.dinamico.TareaController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="169.0" prefWidth="633.0" styleClass="shadow2" stylesheets="@productoView.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="App.Controllers.dinamico.ProductoController">
    <children>
-      <Pane maxWidth="1.7976931348623157E308" prefHeight="163.0" prefWidth="616.0" style="-fx-background-color: e1f4ea;">
-         <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7dd7cb" height="126.0" layoutX="497.0" stroke="TRANSPARENT" strokeType="INSIDE" width="105.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7dd7cb" height="26.0" layoutX="21.0" layoutY="136.0" stroke="TRANSPARENT" strokeType="INSIDE" width="105.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#7dd7cb" height="26.0" layoutX="134.0" layoutY="136.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="shadow2" width="60.0" />
-            <Label fx:id="nombreTarea" layoutX="27.0" layoutY="14.0" prefHeight="25.0" prefWidth="273.0" text="Tarea tiririn">
-               <font>
-                  <Font name="System Bold" size="17.0" />
-               </font>
-            </Label>
-            <Label fx:id="estadoTarea" alignment="CENTER" layoutX="505.0" layoutY="34.0" prefHeight="19.0" prefWidth="90.0" text="SIN_INICIAR" textAlignment="CENTER" underline="true">
-               <font>
-                  <Font name="System Italic" size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="descTarea" alignment="TOP_LEFT" layoutX="27.0" layoutY="43.0" prefHeight="82.0" prefWidth="449.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." wrapText="true">
-               <font>
-                  <Font size="13.0" />
-               </font>
-            </Label>
-            <Label fx:id="idTarea" layoutX="164.0" layoutY="136.0" prefHeight="26.0" prefWidth="35.0" text="24">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="138.0" layoutY="136.0" prefHeight="26.0" prefWidth="26.0" text="ID:">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="fechaCreacionTarea" alignment="CENTER_RIGHT" layoutX="523.0" layoutY="137.0" prefHeight="26.0" prefWidth="79.0" text="2023-04-10">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="421.0" layoutY="137.0" prefHeight="26.0" prefWidth="128.0" text="Fecha de Creación:">
-               <font>
-                  <Font name="System Bold Italic" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="526.0" layoutY="3.0" prefHeight="26.0" prefWidth="44.0" text="Estado">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="27.0" layoutY="136.0" prefHeight="26.0" prefWidth="79.0" text="Prioridad:">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="prioridadTarea" alignment="CENTER_RIGHT" layoutX="100.0" layoutY="136.0" prefHeight="26.0" prefWidth="19.0" text="4">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="btnIrActualizar" alignment="CENTER" layoutX="505.0" layoutY="65.0" mnemonicParsing="false" onAction="#onBtnIrActualizar" prefHeight="52.0" prefWidth="90.0" text="ACTUALIZAR TAREA" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Button>
-         </children>
-      </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ddd0c3" height="150.0" stroke="TRANSPARENT" strokeType="INSIDE" width="616.0" />
+      <Label fx:id="nombreProducto" layoutX="171.0" layoutY="10.0" prefHeight="26.0" prefWidth="356.0" text="Albondigas con Queso ">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="descProducto" alignment="TOP_LEFT" layoutX="172.0" layoutY="37.0" prefHeight="83.0" prefWidth="254.0" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." wrapText="true">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="171.0" layoutY="123.0" prefHeight="26.0" prefWidth="128.0" text="Unidades Disponibles:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="unidadesDisponibles" layoutX="301.0" layoutY="123.0" prefHeight="26.0" prefWidth="49.0" text="500">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnAgregarCarrito" alignment="CENTER" layoutX="507.0" layoutY="49.0" mnemonicParsing="false" onAction="#onBtnAgregarCarrito" prefHeight="52.0" prefWidth="90.0" text="AGREGAR AL CARRITO" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="100.0" fitWidth="100.0" layoutX="29.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagenes/fast-food.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#accfef" height="26.0" layoutX="527.0" stroke="TRANSPARENT" strokeType="INSIDE" width="90.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#accfef" height="37.0" layoutX="437.0" layoutY="123.0" stroke="TRANSPARENT" strokeType="INSIDE" styleClass="shadow2" width="191.0" />
+      <Label layoutX="443.0" layoutY="129.0" prefHeight="26.0" prefWidth="60.0" text="Categoria:">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="categoriaProducto" layoutX="506.0" layoutY="129.0" prefHeight="26.0" prefWidth="117.0" text="COMBOS">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label fx:id="precioProducto" layoutX="544.0" layoutY="-1.0" prefHeight="26.0" prefWidth="66.0" text="500">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="533.0" layoutY="-1.0" prefHeight="26.0" prefWidth="13.0" text="\$">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

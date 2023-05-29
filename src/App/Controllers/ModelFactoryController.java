@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import App.Model.Cliente;
 import App.Model.Domain;
+import App.Model.Producto;
 import App.Service.DatabaseService;
 
 public class ModelFactoryController {
@@ -50,6 +51,10 @@ public class ModelFactoryController {
 	public Cliente getClientePorUsuarioYContrasenia(String usuario, String contrasenia) {
 		return databaseService.getClientePorUsuarioYContrasenia(usuario, contrasenia);
 	}
+	
+	public ArrayList<Producto> getProductos() {		
+		return databaseService.getProductos();
+	}
 
 	public boolean crearCliente(String nombre, String apellido, String email, String telefono,
 			String direccion, String contrasenia, String codigoAfiliado) { 
@@ -67,18 +72,5 @@ public class ModelFactoryController {
 		
 		return clienteCreado;
 	}
-
-	
-	
-	
-	
-//	public Persona getPersonaPorId(int idPersona) {
-//		return domain.getPersonaPorId(idPersona);
-//	}
-//	
-//	public Persona getPersonaPorUsuarioYContrasenia(String user, String contrasenia) {
-//		return domain.getPersonaPorUsuarioYContrasenia(user, contrasenia);
-//	}
-	
 
 }

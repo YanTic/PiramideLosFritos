@@ -6,9 +6,22 @@ import java.util.ResourceBundle;
 import App.MainApp;
 import App.Model.Producto;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 
 public class ProductoController implements Initializable {
+
+	@FXML private AnchorPane anchorPane;
+    @FXML private Label nombreProducto;
+    @FXML private Label descProducto;
+    @FXML private Label unidadesDisponibles;
+    @FXML private Label categoriaProducto;
+    @FXML private Label precioProducto;
+    @FXML private Button btnAgregarCarrito;
 
 	MainApp mainApp;
 	Producto producto;
@@ -33,20 +46,18 @@ public class ProductoController implements Initializable {
 		this.mainApp = mainApp;
 		this.producto = producto;		
 	}
-
 	
 	public void inicializarDatos() {
-//		nombreTarea.setText(tarea.getNombre());
-//	    descTarea.setText(tarea.getDescripción());
-//	    idTarea.setText(tarea.getId());
-//	    fechaCreacionTarea.setText(tarea.getFechaCreacion().toString());
-//	    prioridadTarea.setText(""+tarea.getPrioridad());
-//	    estadoTarea.setText(tarea.getEstado().toString());
-//	    estadoTarea1.setText(tarea.getEstado().toString());
-//
-//	    cbEstadoTarea.getItems().clear();
-//		cbEstadoTarea.getItems().addAll(EstadoTarea.values());
-//		cbEstadoTarea.getSelectionModel().clearSelection();		
+		nombreProducto.setText(producto.getNombre());
+	    descProducto.setText(producto.getDescripcion());
+	    unidadesDisponibles.setText(producto.getUnidadesDisponibles());
+	    categoriaProducto.setText(producto.getCategoria());
+	    precioProducto.setText(producto.getPrecio());
 	}
+	
+	@FXML
+    void onBtnAgregarCarrito(ActionEvent event) {
+
+    }
 
 }

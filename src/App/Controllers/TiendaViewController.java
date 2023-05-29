@@ -2,10 +2,13 @@ package App.Controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import App.MainApp;
+import App.Controllers.dinamico.ProductoController;
 import App.Model.Cliente;
+import App.Model.Producto;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,9 +43,6 @@ public class TiendaViewController implements Initializable {
 
     private MainApp mainApp;
     ModelFactoryController modelFactoryController;
-//    Proyecto proyectoAsignado; 
-//    Tarea tareaSeleccionada;
-//    Persona usuario;
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -66,8 +66,7 @@ public class TiendaViewController implements Initializable {
 	}
 	
 	private void inicializarProductos() {
-//		ArrayList<Proyecto> proyectos = modelFactoryController.getProyectosPorPersona(mainApp.getUsuarioLogeado().getId());
-//		lb_Equipo_Persona.setText("Equipo #"+modelFactoryController.getEquipoPorPersona(mainApp.getUsuarioLogeado().getId()).getId());
+		ArrayList<Producto> productos = modelFactoryController.getProductos();
 		
 		// Recordar: Para proyectos con gridpanes dinamica, en el scenebuilder, siempre
 		// dejar el gridpane sin filas ni columnas (bueno, una si). De tal manera
@@ -75,37 +74,31 @@ public class TiendaViewController implements Initializable {
 		// Esto se hace porque ya le estamos agregando la cantidad de elementos que
 		// va a tener, cuantas filas y columnas en esta funcion, y ya el tamaño es
 		// segun el AnchorPane de la vista dinamica que creamos (proyecto.fxml) 
-//		gridPaneProyectos.getChildren().clear();
-//		int fila = 0;
-//		int columna = 0;		
-//		
-//		for(int i = 0; i<proyectos.size(); i++) {
-//			try{
-//				// Cargamos la vista dinamica
-//				FXMLLoader fxmlLoader = new FXMLLoader();
-//				fxmlLoader.setLocation(MainApp.class.getResource("Views/dinamico/proyecto.fxml"));
-//												
-//				// Por estetica, solo se va a permitir ver dos proyectos por fila 
-//				// Luego de haber dos en la fila, creamos otra fila.
-//				if(columna == 2) {
-//					columna = 0;
-//					fila++;
-//				}
-//				
-//				// Agregamos la vista al gridpane de proyecto
-//				gridPaneProyectos.add(fxmlLoader.load(), ++columna, fila);
-//				
-//				// Cargamos el controlador de la vista
-//				// El controlador solo se crea despues de cargar el fxml 
-//				// usando 'fxmlLoader.load()'
-//				ProyectoController proyectoController = fxmlLoader.getController();
-//				proyectoController.establecerDatos(proyectos.get(i), mainApp);
-//				
-//			}
-//			catch (IOException e) {
-//				e.printStackTrace();
-//			}			
-//		}
+		gridPaneProductos.getChildren().clear();
+		int fila = 0;	
+		
+		for(int i = 0; i<productos.size(); i++) {
+			try{
+				// Cargamos la vista dinamica
+				FXMLLoader fxmlLoader = new FXMLLoader();
+				fxmlLoader.setLocation(MainApp.class.getResource("Views/dinamico/producto.fxml"));
+				
+				// Agregamos la vista al gridpane de proyecto
+				gridPaneProductos.add(fxmlLoader.load(), 0, fila);
+				
+				// No se usan columnas, porque solo será una, solo aumentarán las filas
+				fila++;
+				
+				// Cargamos el controlador de la vista
+				// El controlador solo se crea despues de cargar el fxml 
+				// usando 'fxmlLoader.load()'
+				ProductoController productoController = fxmlLoader.getController();
+				productoController.establecerDatos(mainApp, productos.get(i));				
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}			
+		}
 		
 	}
 	

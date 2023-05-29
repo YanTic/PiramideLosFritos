@@ -8,29 +8,16 @@
     -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.2), 10.0, 0.5, 0.5, 1.0);
 }
 
-#btnIrActualizar {
-	-fx-background-color: #50b7a9;
+#btnAgregarCarrito {
+	-fx-background-color: #94d3b0;
 }
 
-#btnIrActualizar:hover {
+#btnAgregarCarrito:hover {
 	-fx-background-color: #7cbab1;
 	-fx-cursor: hand;
 }
 
-
-#btnActualizarTarea {
-	-fx-background-color: #50b7a9;
+#anchorPane {
+	-fx-background-color: transparent;
 }
 
-#btnActualizarTarea:hover {
-	-fx-background-color: #7cbab1;
-	-fx-cursor: hand;
-}
-
-#btnRegresar {
-	-fx-background-color: #e9edc9;
-}
-
-#btnRegresar:hover {
-	-fx-background-color: #ccd5ae;
-}
