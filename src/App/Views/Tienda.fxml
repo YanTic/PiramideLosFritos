@@ -45,6 +45,42 @@
                               </ScrollPane>
                            </children>
                         </HBox>
+                        <Pane fx:id="paneCarrito" layoutX="14.0" layoutY="70.0" prefHeight="449.0" prefWidth="691.0" style="-fx-background-color: a4c3b2;" visible="false">
+                           <children>
+                              <Button fx:id="btnComprar" layoutX="542.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnComprar" text="Comprar" textFill="#313bff">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnEliminarProductos" layoutX="359.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnEliminarProductos" text="Eliminar Productos" textFill="RED">
+                                 <font>
+                                    <Font name="System Bold" size="17.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="btnSalirCarrito" layoutX="651.0" mnemonicParsing="false" onAction="#onBtnSalirCarrito" styleClass="btnTransparentes">
+                                 <graphic>
+                                    <ImageView fitHeight="44.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@imagenes/exit.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                              </Button>
+                              <HBox layoutX="26.0" layoutY="61.0" prefHeight="345.0" prefWidth="641.0" styleClass="Transparente">
+                                 <children>
+                                    <ScrollPane prefHeight="504.0" prefWidth="676.0" styleClass="Transparente">
+                                       <content>
+                                          <GridPane fx:id="gridPaneCarrito" hgap="15.0" prefHeight="0.0" prefWidth="0.0" vgap="30.0">
+                                             <columnConstraints>
+                                                <ColumnConstraints minWidth="10.0" prefWidth="100.0" />
+                                             </columnConstraints>
+                                          </GridPane>
+                                       </content>
+                                    </ScrollPane>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </Pane>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b2d9be" height="4.0" layoutX="14.0" layoutY="57.0" stroke="TRANSPARENT" strokeType="INSIDE" width="690.0" />
                         <Button fx:id="btnCarrito" layoutX="653.0" layoutY="13.0" mnemonicParsing="false" onAction="#onBtnCarrito" styleClass="Transparente">
                            <graphic>

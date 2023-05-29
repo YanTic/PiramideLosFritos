@@ -94,7 +94,7 @@ public class LoginViewController implements Initializable {
 								
 			}
 			else{
-				mostrarMensaje("Notifacion", "Usuario NO Encontado o Contrasenia es Incorrecta", "Datos ingresados NO validos", AlertType.ERROR);
+				mostrarMensaje("Notifacion", "Login Incorrecto", "Usuario NO Encontado o la Contrasenia es Incorrecta. Puede que la cuenta este desactivada", AlertType.ERROR);
 			}
 		}
 		else{

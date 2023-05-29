@@ -122,3 +122,30 @@
 	-fx-cursor: hand;
 }
 
+
+#btnEliminarProductos {
+	-fx-background-color: transparent;
+	-fx-border-radius: 5;
+	-fx-border-color: red;
+}
+
+#btnEliminarProductos:hover {
+	-fx-background-color: #f78f91;
+	-fx-border-radius: 5;
+	-fx-border-color: red;
+	-fx-cursor: hand;
+}
+
+#btnComprar {
+	-fx-background-color: transparent;
+	-fx-border-radius: 5;
+	-fx-border-color: #313bff;
+}
+
+#btnComprar:hover {
+	-fx-background-color: #747ae2;
+	-fx-border-radius: 5;
+	-fx-border-color: #313bff;
+	-fx-cursor: hand;
+}
+

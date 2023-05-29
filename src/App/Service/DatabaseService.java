@@ -40,14 +40,16 @@ public class DatabaseService {
 		
 		try {
 			statement = connection.createStatement();
-			String sql = "SELECT ID FROM CLIENTE "+
+			String sql = "SELECT ID, ESTADO FROM CLIENTE "+
 						 "WHERE NOMBRE = \'"+usuario+"\' AND CONTRASENIA = \'"+contrasenia+"\'";
 			resultSet = statement.executeQuery(sql);
 			
 			while(resultSet.next()) {
 				System.out.println("id user: "+ resultSet.getInt("ID"));
+				System.out.println("estado user: "+ resultSet.getInt("ESTADO"));
 				
-				if(resultSet.getInt("ID") != 0)
+				// Si el estado es 0 significa que la cuenta está desactivada
+				if(resultSet.getInt("ID") != 0 && resultSet.getInt("ESTADO") == 1)
 					esUsuarioExistente = true;
 			}			
 			System.out.println("Terminado");
@@ -212,6 +214,51 @@ public class DatabaseService {
 		
 		return categoria;
 	}
+		
+	public Integer getIdCliente(Cliente c) {
+		Integer id = null;
+		
+		try {
+			// Se tiene que crear otro statement al global porque esta funcion es llamada
+			// dentro de un while() que usa el statement global
+			Statement statement = connection.createStatement();
+			
+			// TODO: La BD se tiene que actualizar y poner EMAIL como valor UNICO
+			String sql = "SELECT ID FROM CLIENTE "+
+					 "WHERE NOMBRE = '"+c.getNombre()+"' AND APELLIDO = '"+c.getApellido()+
+					 "' AND EMAIL = '"+c.getEmail()+"'";								
+			ResultSet resultSet = statement.executeQuery(sql);
+			
+			while(resultSet.next()) {			
+				id = resultSet.getInt("ID");
+			}		
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		return id;
+	}
 	
-	
+
+	public boolean comprar(ArrayList<Producto> productosCarrito2) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean desactivarCuenta(Cliente cliente) {
+		boolean cuentaDesactivada = false;
+		Integer id = getIdCliente(cliente);
+		
+		try {
+			statement = connection.createStatement();			
+			String sql = "UPDATE CLIENTE SET ESTADO=0 WHERE ID="+id;
+			
+			statement.executeQuery(sql);	
+			System.out.println("Cuenta desactivada");
+			cuentaDesactivada = true;
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		return cuentaDesactivada;
+	}
+		
 }

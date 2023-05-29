@@ -57,7 +57,7 @@ public class ProductoController implements Initializable {
 	
 	@FXML
     void onBtnAgregarCarrito(ActionEvent event) {
-
+		mainApp.getModelFactoryController().getProductosCarrito().add(producto);
     }
 
 }

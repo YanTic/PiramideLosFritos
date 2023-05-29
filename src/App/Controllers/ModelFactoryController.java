@@ -1,17 +1,16 @@
 package App.Controllers;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 import App.Model.Cliente;
-import App.Model.Domain;
 import App.Model.Producto;
 import App.Service.DatabaseService;
 
 public class ModelFactoryController {
 
-	Domain domain;
 	DatabaseService databaseService;
+	ArrayList<Producto> productosCarrito;
+	
 	
 	//------------------------------  Singleton ------------------------------------------------
 	// Clase estatica oculta. Tan solo se instanciara el singleton una vez
@@ -25,18 +24,14 @@ public class ModelFactoryController {
 		return SingletonHolder.eINSTANCE;
 	}
 		
-	public ModelFactoryController() {
-		if(domain == null){
-			System.out.println("DOMAIN ES NULL");
-			
-			inicializarDatos();			
-		}
+	public ModelFactoryController() {			
+		inicializarDatos();			
 	}
 		
 	
 	private void inicializarDatos() {
-		domain = new Domain();		
 		databaseService = new DatabaseService();
+		productosCarrito = new ArrayList<>();
 	}
 	
 	
@@ -73,4 +68,15 @@ public class ModelFactoryController {
 		return clienteCreado;
 	}
 
+	public ArrayList<Producto> getProductosCarrito() {
+		return productosCarrito;
+	}
+
+	public boolean comprar(ArrayList<Producto> productosCarrito2) {
+		return databaseService.comprar(productosCarrito2);
+	}
+
+	public boolean desactivarCuenta(Cliente cliente) {
+		return databaseService.desactivarCuenta(cliente);
+	}
 }
