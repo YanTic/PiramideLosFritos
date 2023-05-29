@@ -28,13 +28,17 @@ public class LoginViewController implements Initializable {
     @FXML private Button btnRegistro;
     
     @FXML private AnchorPane panelRegistrarUsuario;
-    @FXML private TextField txtNuevoUsuario;
+    @FXML private TextField txtNuevoNombre;
+    @FXML private TextField txtNuevoApellido;
+    @FXML private TextField txtNuevoEmail;
+    @FXML private TextField txtNuevoCodigoAfiliado;
+    @FXML private TextField txtNuevoTelefono;
+    @FXML private TextField txtNuevoDireccion;
     @FXML private TextField txtNuevaContrasenia;
     @FXML private TextField txtConfirmarNuevaContrasenia;
     @FXML private Button btnCrearCuenta;
     @FXML private Button btnRegresar;
-    
-
+  
 	private MainApp mainApp;
     ModelFactoryController modelFactoryController;
 	
@@ -110,10 +114,56 @@ public class LoginViewController implements Initializable {
     	panelRegistrarUsuario.setVisible(false);
     }
 
+    
     @FXML
     void onBtnCrearCuenta(ActionEvent event) {
-
+    	crearNuevoUsuario();
     }
+    
+    private void crearNuevoUsuario() {
+		// Captura los datos
+    	String nuevoNombre = txtNuevoNombre.getText();    	
+        String nuevoApellido = txtNuevoApellido.getText();
+        String nuevoEmail = txtNuevoEmail.getText();
+        String nuevoCodigoAfiliado = txtNuevoCodigoAfiliado.getText();
+        String nuevoTelefono = txtNuevoTelefono.getText();
+        String nuevoDireccion = txtNuevoDireccion.getText();
+		String nuevaContrasenia = txtNuevaContrasenia.getText();
+		String confirmarNuevaContrasenia = txtConfirmarNuevaContrasenia.getText();		
+			
+		// Valida los datos
+		if(datosValidos(nuevoNombre, nuevoApellido, nuevoEmail, nuevoTelefono, nuevoDireccion, nuevaContrasenia, confirmarNuevaContrasenia) 
+				&& validarCodigoAfiliado(nuevoCodigoAfiliado)){
+			boolean clienteCreado = false;
+			
+			// Crea el cliente
+			clienteCreado = modelFactoryController.crearCliente(nuevoNombre, nuevoApellido, nuevoEmail, nuevoTelefono, nuevoDireccion, nuevaContrasenia, nuevoCodigoAfiliado);		
+			
+			if(clienteCreado){				
+				mostrarMensaje("Notifacion", "Usuario Creado", "Usuario creado con exito! Bienvenido "+ 
+								nuevoNombre+ "!", AlertType.INFORMATION);							
+				
+				// Limpio los textfield
+				txtNuevoNombre.clear();    	
+		        txtNuevoApellido.clear();
+		        txtNuevoEmail.clear();
+		        txtNuevoCodigoAfiliado.clear();
+		        txtNuevoTelefono.clear();
+		        txtNuevoDireccion.clear();
+				txtNuevaContrasenia.clear();
+				txtConfirmarNuevaContrasenia.clear();
+			}
+			else{
+				mostrarMensaje("Notifacion", "Usuario NO Creado", "El Usuario NO ha sido creado", AlertType.ERROR);
+			}
+		}
+		else{
+			mostrarMensaje("Notifacion", "Usuario NO Creado", "Datos ingresados NO validos", AlertType.ERROR);
+		}
+	}
+    
+    
+    
     
     public void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType){
     	Alert alert = new Alert(alertType);
@@ -144,12 +194,35 @@ public class LoginViewController implements Initializable {
     
     /*
      * Este metodo valida los datos de un --- Registro de Usuario ---
-     * */
-    private boolean datosValidos(String nuevoUsuario, String nuevaContrasenia, String confirmarNuevaContrasenia){
+     * */    
+    private boolean datosValidos(String nuevoNombre, String nuevoApellido, String nuevoEmail,
+    		String nuevoTelefono, String nuevoDireccion, String nuevaContrasenia, String confirmarNuevaContrasenia){
     	String mensaje = "";
     	
-    	if(nuevoUsuario == null || nuevoUsuario.equals(""))
-    		mensaje += "Usuario no valido\n";
+    	if(nuevoNombre == null || nuevoNombre.equals(""))
+    		mensaje += "Nombre no valido\n";
+    	
+    	if(nuevoApellido == null || nuevoApellido.equals(""))
+    		mensaje += "Apellidos no validos\n";
+    	
+    	if(nuevoEmail == null || nuevoEmail.equals(""))
+    		mensaje += "Email no valido\n";
+    	
+    	if(nuevoTelefono == null || nuevoTelefono.equals(""))
+    		mensaje += "Telefono no valido\n";
+    	
+    	// Tambien se debe verificar si el numeroTelefono es un numero (aunque lo manejemos con string aquí y en la BD) 
+    	try { 
+            Integer.parseInt(nuevoTelefono); 
+        } catch(NumberFormatException e) { 
+        	mensaje += "Telefono no valido\n"; 
+        } catch(NullPointerException e) {
+        	mensaje += "Telefono no valido\n";
+        }
+    	
+    	// La direccion puede ser nula
+//    	if(nuevoDireccion == null || nuevoDireccion.equals(""))
+//    		mensaje += "Direccion no valida\n";
     	
     	if(nuevaContrasenia == null || nuevaContrasenia.equals(""))
     		mensaje += "Contrasenia no valida\n";
@@ -171,4 +244,37 @@ public class LoginViewController implements Initializable {
     	}
     	
     } 
+    
+    
+    private boolean validarCodigoAfiliado(String nuevoCodigoAfiliado) {
+    	String mensaje = "";
+    	
+    	// Verifica si el campo codigo está vacio.
+    	// Retorna directamente true porque no es obligatorio poner un codigoafiliado
+    	if(nuevoCodigoAfiliado == null || nuevoCodigoAfiliado.equals("")) {    	
+    		return true;
+    	}
+    		
+    	// Si el usuario puso un codigo es necesario verificarlo
+    	// Se verifica si el codigo es un numero (no letras) y se verifica 
+    	// si el codigo es de algun cliente en la BD
+    	try { 
+            Integer codigo = Integer.parseInt(nuevoCodigoAfiliado);
+            
+            if(!modelFactoryController.verificarCodigoAfiliado(codigo))
+        		mensaje += "Codigo de Afiliacion no valido\n";
+        } catch(NumberFormatException e) { 
+        	mensaje += "Codigo de Afiliacion no valido\n"; 
+        } catch(NullPointerException e) {
+        	mensaje += "Codigo de Afiliacion no valido\n";
+        }
+    	
+    	if(mensaje.equals("")){
+    		return true;    		
+    	}
+    	else{
+    		mostrarMensaje("Notificacion", "Datos no validos", mensaje, AlertType.WARNING);
+    		return false;    		
+    	}
+    }
 }

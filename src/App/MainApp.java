@@ -23,7 +23,7 @@ public class MainApp extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("Modulo Colaboracion");
+		this.primaryStage.setTitle("Piramide Los Fritos");
 		
 		// Creamos la instancia del ModelFactory, la cual crea los datos.
 		// Como cada vista se van asignado la MainApp, esta contendrá

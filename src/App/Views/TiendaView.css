@@ -57,6 +57,12 @@
 	-fx-padding: 0 30 0 30;
 }
 
+.tab:hover {
+	-fx-cursor: hand;
+}
+
+	
+
 .tab:selected {
 	-fx-background-color: #ccd5ae;
 	-fx-background-radius: 0;
@@ -88,3 +94,31 @@
 	-fx-background-radius: 100%;
 	-fx-text-fill:white;
 }*/
+
+
+#btnDesactivarCuenta {
+	-fx-background-color: transparent;
+	-fx-border-radius: 5;
+	-fx-border-color: red;
+}
+
+#btnDesactivarCuenta:hover {
+	-fx-background-color: #f78f91;
+	-fx-border-radius: 5;
+	-fx-border-color: red;
+	-fx-cursor: hand;
+}
+
+#btnGuardarCambios {
+	-fx-background-color: #ceead6;
+	-fx-border-radius: 5;
+	-fx-border-color: #77e598;
+}
+
+#btnGuardarCambios:hover {
+	-fx-background-color: #8defaa;
+	-fx-border-radius: 5;
+	-fx-border-color: #77e598;
+	-fx-cursor: hand;
+}
+

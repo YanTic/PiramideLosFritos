@@ -7,20 +7,18 @@ public class Cliente {
 	private String email;
 	private String telefono;
 	private String direccion;
-	private String ciudad;
 	private String membresia;
 	private Integer afiliado_id;
 	
 	public Cliente() {}
 
 	public Cliente(String nombre, String apellido, String email, String telefono, 
-			String direccion, String ciudad, String membresia, Integer afiliado_id) {
+			String direccion, String membresia, Integer afiliado_id) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.email = email;
 		this.telefono = telefono;
 		this.direccion = direccion;
-		this.ciudad = ciudad;
 		this.membresia = membresia;
 		this.afiliado_id = afiliado_id;
 	}
@@ -65,14 +63,6 @@ public class Cliente {
 		this.direccion = direccion;
 	}
 
-	public String getCiudad() {
-		return ciudad;
-	}
-
-	public void setCiudad(String ciudad) {
-		this.ciudad = ciudad;
-	}
-
 	public String getMembresia() {
 		return membresia;
 	}
@@ -92,7 +82,6 @@ public class Cliente {
 	@Override
 	public String toString() {
 		return "Cliente [nombre=" + nombre + ", apellido=" + apellido + ", email=" + email + ", telefono=" + telefono
-				+ ", direccion=" + direccion + ", ciudad=" + ciudad + ", membresia=" + membresia + ", afiliado_id="
-				+ afiliado_id + "]";
+				+ ", direccion=" + direccion + ", membresia=" + membresia + ", afiliado_id=" + afiliado_id + "]";
 	}
 }

@@ -27,12 +27,18 @@
 }
 
 #btnCrearCuenta {
-	-fx-background-color: #80c168;
+	-fx-background-color: #9ece8c;	
+	-fx-border-radius: 5;
+	-fx-border-color: #77e598;
 }
 
-#btnCrearCuenta:hover{
-	-fx-background-color: #9ece8c;
+#btnCrearCuenta:hover {
+	-fx-background-color: #80c168;
+	-fx-border-radius: 5;
+	-fx-border-color: #77e598;
+	-fx-cursor: hand;
 }
+
 
 #btnAyuda:hover{
 /*	-fx-font-color: #2775FF;*/

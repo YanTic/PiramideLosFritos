@@ -42,10 +42,33 @@ public class ModelFactoryController {
 	public boolean verificarUsuario(String usuario, String contrasenia) {		
 		return databaseService.verificarUsuario(usuario, contrasenia);
 	}
+	
+	public boolean verificarCodigoAfiliado(Integer codigoAfiliado) {
+		return databaseService.verificarCodigoAfiliado(codigoAfiliado);
+	}
 
 	public Cliente getClientePorUsuarioYContrasenia(String usuario, String contrasenia) {
 		return databaseService.getClientePorUsuarioYContrasenia(usuario, contrasenia);
 	}
+
+	public boolean crearCliente(String nombre, String apellido, String email, String telefono,
+			String direccion, String contrasenia, String codigoAfiliado) { 
+		boolean clienteCreado = false;
+		Cliente nuevoCliente = new Cliente();
+		nuevoCliente.setNombre(nombre);
+		nuevoCliente.setApellido(apellido);
+		nuevoCliente.setEmail(email);
+		nuevoCliente.setTelefono(telefono);
+		nuevoCliente.setDireccion(direccion);
+		nuevoCliente.setMembresia("FRITO MADERA"); // Primer nivel cuando se crea un cuenta. Esto lo hace un Trigger cuando se inserta en la tabla Cliente
+		nuevoCliente.setAfiliado_id(Integer.parseInt(codigoAfiliado));		
+		
+		clienteCreado = databaseService.crearCliente(nuevoCliente, contrasenia);
+		
+		return clienteCreado;
+	}
+
+	
 	
 	
 	

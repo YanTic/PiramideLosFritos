@@ -94,53 +94,53 @@
                         </Button>
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="panelRegistrarUsuario" layoutX="32.0" layoutY="41.0" prefHeight="461.0" prefWidth="386.0" style="-fx-background-color: #739168;" visible="false">
+                  <AnchorPane fx:id="panelRegistrarUsuario" layoutX="32.0" layoutY="41.0" prefHeight="461.0" prefWidth="386.0" style="-fx-background-color: #739168;" styleClass="shadow" visible="false">
                      <children>
-                        <Label layoutX="35.0" layoutY="36.0" opacity="0.8" text="Crear nueva cuenta" textFill="WHITE">
+                        <Label layoutX="35.0" layoutY="21.0" opacity="0.8" text="Crear Nueva Cuenta" textFill="WHITE">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="33.0" />
                            </font>
                         </Label>
-                        <Label layoutX="59.0" layoutY="114.0" opacity="0.73" text="Nombre de Usuario" textFill="WHITE">
+                        <Label layoutX="24.0" layoutY="78.0" opacity="0.73" text="Nombre*" textFill="WHITE">
                            <font>
                               <Font name="Arial Unicode MS" size="13.0" />
                            </font>
                            <graphic>
                               <ImageView fitHeight="21.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../COLLEGE/Semestre%204/Programacion%20III/programming3/co.edu.uniquindio.Marketplace/src/co/edu/uniquindio/Marketplace/view/images/Cara.png" />
+                                    <Image url="@imagenes/Cara.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Label>
-                        <TextField fx:id="txtNuevoUsuario" layoutX="59.0" layoutY="140.0" prefHeight="25.0" prefWidth="266.0" />
-                        <Label layoutX="59.0" layoutY="178.0" opacity="0.73" text="Contraseña" textFill="WHITE">
+                        <TextField fx:id="txtNuevoNombre" layoutX="24.0" layoutY="104.0" prefHeight="25.0" prefWidth="200.0" />
+                        <Label layoutX="24.0" layoutY="255.0" opacity="0.73" text="Contraseña*" textFill="WHITE">
                            <font>
                               <Font name="Arial Unicode MS" size="13.0" />
                            </font>
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../COLLEGE/Semestre%204/Programacion%20III/programming3/co.edu.uniquindio.Marketplace/src/co/edu/uniquindio/Marketplace/view/images/Contasenia.png" />
+                                    <Image url="@imagenes/Contasenia.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Label>
-                        <TextField fx:id="txtNuevaContrasenia" layoutX="59.0" layoutY="204.0" prefHeight="25.0" prefWidth="266.0" />
-                        <Label layoutX="59.0" layoutY="241.0" opacity="0.73" text="Confirmar Contraseña" textFill="WHITE">
+                        <TextField fx:id="txtNuevaContrasenia" layoutX="24.0" layoutY="281.0" prefHeight="25.0" prefWidth="200.0" />
+                        <Label layoutX="24.0" layoutY="318.0" opacity="0.73" text="Confirmar Contraseña*" textFill="WHITE">
                            <font>
                               <Font name="Arial Unicode MS" size="13.0" />
                            </font>
                            <graphic>
                               <ImageView fitHeight="39.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../../COLLEGE/Semestre%204/Programacion%20III/programming3/co.edu.uniquindio.Marketplace/src/co/edu/uniquindio/Marketplace/view/images/Contasenia.png" />
+                                    <Image url="@imagenes/Contasenia.png" />
                                  </image>
                               </ImageView>
                            </graphic>
                         </Label>
-                        <TextField fx:id="txtConfirmarNuevaContrasenia" layoutX="59.0" layoutY="267.0" prefHeight="25.0" prefWidth="266.0" />
-                        <Button fx:id="btnCrearCuenta" layoutX="138.0" layoutY="315.0" mnemonicParsing="false" onAction="#onBtnCrearCuenta" opacity="0.84" text="Crear Cuenta">
+                        <TextField fx:id="txtConfirmarNuevaContrasenia" layoutX="24.0" layoutY="344.0" prefHeight="25.0" prefWidth="200.0" />
+                        <Button fx:id="btnCrearCuenta" layoutX="259.0" layoutY="412.0" mnemonicParsing="false" onAction="#onBtnCrearCuenta" opacity="0.84" text="Crear Cuenta">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -167,6 +167,71 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
+                        <Label layoutX="24.0" layoutY="137.0" opacity="0.73" text="Apellidos*" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Unicode MS" size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="21.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@imagenes/Cara.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <TextField fx:id="txtNuevoApellido" layoutX="24.0" layoutY="163.0" prefHeight="25.0" prefWidth="200.0" />
+                        <Label layoutX="24.0" layoutY="196.0" opacity="0.73" text="Email*" textFill="WHITE">
+                           <font>
+                              <Font name="Arial Unicode MS" size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="21.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@imagenes/mail.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <TextField fx:id="txtNuevoEmail" layoutX="24.0" layoutY="222.0" prefHeight="25.0" prefWidth="200.0" />
+                        <TextField fx:id="txtNuevoCodigoAfiliado" layoutX="285.0" layoutY="333.0" prefHeight="25.0" prefWidth="77.0" />
+                        <Label layoutX="271.0" layoutY="293.0" opacity="0.73" prefHeight="39.0" prefWidth="89.0" text="Codigo de afiliacion" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="Arial Unicode MS" size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@imagenes/Cara.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <TextField fx:id="txtNuevoTelefono" layoutX="278.0" layoutY="163.0" prefHeight="25.0" prefWidth="91.0" />
+                        <Label layoutX="271.0" layoutY="137.0" opacity="0.73" text="Telefono*" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="Arial Unicode MS" size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@imagenes/Cara.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <TextField fx:id="txtNuevoDireccion" layoutX="279.0" layoutY="222.0" prefHeight="25.0" prefWidth="91.0" />
+                        <Label layoutX="272.0" layoutY="196.0" opacity="0.73" text="Direccion" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="Arial Unicode MS" size="13.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="39.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@imagenes/Cara.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
                      </children>
                   </AnchorPane>
                </children>
