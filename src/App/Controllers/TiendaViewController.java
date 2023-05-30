@@ -186,7 +186,7 @@ public class TiendaViewController implements Initializable {
     
     @FXML
     void onBtnEliminarProductos(ActionEvent event) {
-    	if(verificarEliminarCarrito()) {
+    	if(verificar("Confirmacion", "Eliminar Carrito", "¿Esta seguro de eliminar los productos de su carrito de compra?")) {
     		mainApp.getModelFactoryController().getProductosCarrito().clear();
     		inicializarCarrito();	
     	}
@@ -199,15 +199,21 @@ public class TiendaViewController implements Initializable {
     
     @FXML
     void onBtnComprar(ActionEvent event) {
-    	if(modelFactoryController.comprar(mainApp.getModelFactoryController().getProductosCarrito()))
-    		mostrarMensaje("Notifacion", "Compra Realizada", "La compra se ha realizado correctamente", AlertType.INFORMATION);
-    	else
-    		mostrarMensaje("Notifacion", "Compra NO Realizada", "La compra no se realizó con exito", AlertType.ERROR);
+    	if(verificar("Confirmacion", "Realizar Compra", "¿Esta seguro de realizar la compra?")) {
+    		if(modelFactoryController.comprar(mainApp.getModelFactoryController().getProductosCarrito(), mainApp.getUsuarioLogeado())){
+    			mostrarMensaje("Notifacion", "Compra Realizada", "La compra se ha realizado correctamente", AlertType.INFORMATION);
+    			mainApp.getModelFactoryController().getProductosCarrito().clear();
+        		inicializarCarrito();	    			
+    		}
+        	else
+        		mostrarMensaje("Notifacion", "Compra NO Realizada", "La compra no se realizó con exito", AlertType.ERROR);	
+    	}
+    	
     }
     
     @FXML
     void onBtnDesactivarCuenta(ActionEvent event) {
-    	if(verificarDesactivarCuenta()) {
+    	if(verificar("Confirmacion", "Desactivar Cuenta", "¿Esta seguro que quiere desactivar su cuenta?")) {
     		if(modelFactoryController.desactivarCuenta(mainApp.getUsuarioLogeado())){
     			mostrarMensaje("Notifacion", "Cuenta Desactivada", "Su cuenta ha sido desactivada correctamente. Regresando a la pagina principal...", AlertType.INFORMATION);
     			cerrarSesion();    			
@@ -230,24 +236,11 @@ public class TiendaViewController implements Initializable {
     	alert.showAndWait();
     }
 
-    public boolean verificarEliminarCarrito() {
+    public boolean verificar(String title, String header, String text) {
     	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	alert.setTitle("Confirmacion");
-    	alert.setHeaderText("Eliminar Carrito");  	
-    	alert.setContentText("¿Esta seguro de eliminar los productos de su carrito de compra?");
-    	
-    	Optional<ButtonType> resultado = alert.showAndWait();
-    	if(resultado.isPresent() && resultado.get() == ButtonType.OK)
-    		return true;
-    	else
-    		return false;
-    }
-    
-    public boolean verificarDesactivarCuenta() {
-    	Alert alert = new Alert(AlertType.CONFIRMATION);
-    	alert.setTitle("Confirmacion");
-    	alert.setHeaderText("Eliminar Carrito");  	
-    	alert.setContentText("¿Esta seguro de eliminar los productos de su carrito de compra?");
+    	alert.setTitle(title);
+    	alert.setHeaderText(header);  	
+    	alert.setContentText(text);
     	
     	Optional<ButtonType> resultado = alert.showAndWait();
     	if(resultado.isPresent() && resultado.get() == ButtonType.OK)

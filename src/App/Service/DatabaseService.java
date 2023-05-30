@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import App.Model.Cliente;
@@ -239,10 +241,116 @@ public class DatabaseService {
 	}
 	
 
-	public boolean comprar(ArrayList<Producto> productosCarrito2) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean comprar(ArrayList<Producto> carrito, Cliente c) {
+		boolean compraRealizada = false;
+		
+		Integer idNuevaFactura = getUltimoIdFacturaCompra()+1;
+		double descuento = 0; // TODO: Por tiempo no se va a utlizar, todo hagalo en el future
+		double precioTotal = 0;
+		
+		for(Producto p : carrito) {
+			precioTotal += Double.parseDouble(p.getPrecio());
+		}
+		
+		LocalDate fecha = LocalDate.now();
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/YY");
+		System.out.println(dtf.format(fecha));
+		
+		try {
+			statement = connection.createStatement();
+			
+			String sql = "Insert into FACTURACOMPRA (ID,CLIENTE_ID,FECHA,PRECIO,DESCUENTO) "+
+					"values ('"+idNuevaFactura+"','"+getIdCliente(c)+
+					"',to_date('"+dtf.format(fecha)+"','DD/MM/RR'),'"+precioTotal+"','"+descuento+"')";
+			
+			statement.executeQuery(sql);	
+			System.out.println("Factura Registrada Realizada");
+			// El estado de la factura ya lo realiza un TRIGGER []
+			
+// TODO: Hacer ese TODO, porque sino esto no va a dejar guardar varios productos iguales			
+//			for(Producto p : carrito) {
+//				statement = connection.createStatement();
+//				
+//				// TODO: SE DEBE CAMBIAR EL FRONTEND TAMBIEN, PARA QUE NO SE GUARDE
+//				// EL REGISTRO DE 1 SOLO PRODUCTO. Agregar como un boton de aumentar
+//				// o disminuir la cantidad a comprar.
+//				sql = "Insert into DETALLECOMPRA (FACTURACOMPRA_ID,PRODUCTO_ID,CANTIDAD,PRECIOUNITARIO) "+
+//				"values ('"+idNuevaFactura+"','"+getIdProducto(p)+"','1','"+p.getPrecio()+"');";
+//				
+//				statement.executeQuery(sql);	
+//			}
+//			System.out.println("Detalles Registrados");
+			
+			
+			// Solo guardemos el primero, como prueba pues
+			for(Producto p : carrito) {
+				statement = connection.createStatement();
+				sql = "Insert into DETALLECOMPRA (FACTURACOMPRA_ID,PRODUCTO_ID,CANTIDAD,PRECIOUNITARIO) "+
+				"values ('"+idNuevaFactura+"','"+getIdProducto(p)+"','1','"+p.getPrecio()+"')";								
+				System.out.println(sql);
+				statement.executeQuery(sql);	
+				break;
+			}
+			System.out.println("Detalles Registrados");
+			
+			
+			compraRealizada = true;
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		return compraRealizada;
 	}
+	
+	public Integer getUltimoIdFacturaCompra(){
+		Integer ultimoIdFactura = 0;
+		try {
+			statement = connection.createStatement();				
+			String sql = "SELECT MAX(ID) codigo FROM FACTURACOMPRA";			
+			resultSet = statement.executeQuery(sql);
+			
+			while(resultSet.next()) {				
+				ultimoIdFactura = resultSet.getInt("codigo");
+			}			
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		return ultimoIdFactura;
+	}
+	
+	public Integer getUltimoIdDetalleCompra(){
+		Integer ultimoIdDetalle = 0;
+		try {
+			statement = connection.createStatement();				
+			String sql = "SELECT MAX(ID) codigo FROM DETALLECOMPRA";			
+			resultSet = statement.executeQuery(sql);
+			
+			while(resultSet.next()) {				
+				ultimoIdDetalle = resultSet.getInt("codigo");
+			}			
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		return ultimoIdDetalle;
+	}
+	
+	public Integer getIdProducto(Producto p){
+		Integer idProducto = 0;
+		try {
+			statement = connection.createStatement();				
+			String sql = "SELECT ID FROM PRODUCTO WHERE NOMBRE='"+p.getNombre()+
+					"' AND PRECIO='"+p.getPrecio()+"' AND UNIDADESDISPONIBLES='"+
+					p.getUnidadesDisponibles()+"' AND DESCRIPCION='"+p.getDescripcion()+"'";			
+			resultSet = statement.executeQuery(sql);
+			
+			while(resultSet.next()) {				
+				idProducto = resultSet.getInt("ID");
+			}			
+		} 
+		catch (SQLException e) {e.printStackTrace();}
+		
+		return idProducto;
+	}
+	
 
 	public boolean desactivarCuenta(Cliente cliente) {
 		boolean cuentaDesactivada = false;

@@ -72,8 +72,8 @@ public class ModelFactoryController {
 		return productosCarrito;
 	}
 
-	public boolean comprar(ArrayList<Producto> productosCarrito2) {
-		return databaseService.comprar(productosCarrito2);
+	public boolean comprar(ArrayList<Producto> carrito, Cliente cliente) {
+		return databaseService.comprar(carrito, cliente);
 	}
 
 	public boolean desactivarCuenta(Cliente cliente) {
